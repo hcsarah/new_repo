@@ -19,6 +19,7 @@ steps:
     dockerVersion: '17.09.0-ce'
 - task: DockerCompose@0
   inputs:
-    dockerComposeFile: '**/docker-compose.yml'
+    containerregistrytype: 'Azure Container Registry'
+    dockerComposeFile: 'new-repo/docker-compose.yml'
     action: 'Run a Docker Compose command'
-    dockerComposeCommand: 'docker-compose up -d' 
+    dockerComposeCommand: build
