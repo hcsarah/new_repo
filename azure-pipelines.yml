@@ -12,7 +12,6 @@ pool:
 
 steps:
 - script: |
-    docker build: -f Dockerfile -t sarahhristea
     docker login: -u sarahhristea -p Sarah1997!
 
 - task: DockerCompose@0
