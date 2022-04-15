@@ -1,5 +1,25 @@
 # Docker
+# Build a Docker image
+# https://docs.microsoft.com/azure/devops/pipelines/languages/docker
+
+trigger:
+- main
+
+resources:
+- repo: self
+pool:
+  vmImage: ubuntu-latest
+
+variables:
+  tag: '$(Build.BuildId)'
+
 steps:
+- script: |
+    docker build: -f Dockerfile -t $(dockerId)/$(imageName)
+    docker login: -u $(dockerId) -p $pswd
+  env:
+        pswd: $(dockerId)/$(imageName)
+
 - task: DockerCompose@0
   inputs:
     containerregistrytype: 'Azure Container Registry'
