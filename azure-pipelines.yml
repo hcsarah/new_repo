@@ -20,6 +20,11 @@ stages:
     pool:
       vmImage: ubuntu-latest
     steps:
+    docker build -f Dockerfile -t $(dockerId)/$(imageName)
+    docker login -u $(dockerId) -p $pswd
+    env:
+        pswd: $(dockerId)/$(imageName)
+
     - task: Docker@2
       displayName: Build an image
       inputs:
