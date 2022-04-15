@@ -21,4 +21,4 @@ steps:
   inputs:
     dockerComposeFile: '**/docker-compose.yml'
     action: 'Run a Docker Compose command'
-    dockerComposeCommand: 'docker-compose up -t' 
+    dockerComposeCommand: 'docker build' 
