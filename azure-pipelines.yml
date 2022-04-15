@@ -10,10 +10,6 @@ resources:
 pool:
   vmImage: ubuntu-latest
 
-steps:
-- script: |
-    docker login: -u sarahhristea -p Sarah1997!
-
 - task: DockerCompose@0
   inputs:
     dockerComposeFile: '**/docker-compose.yml'
