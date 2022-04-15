@@ -20,9 +20,7 @@ steps:
   env:
         pswd: $(dockerId)/$(imageName)
 
-- task: DockerCompose@0
+- task: Docker@2
   inputs:
-    containerregistrytype: 'Azure Container Registry'
-    dockerComposeFile: '**/docker-compose.yml'
-    action: 'Run a Docker Compose command'
-    dockerComposeCommand: 'docker-compose up -t' 
+    command: 'build'
+    Dockerfile: '**/Dockerfile'
