@@ -10,9 +10,6 @@ resources:
 pool:
   vmImage: ubuntu-latest
 
-variables:
-  tag: '$(Build.BuildId)'
-
 steps:
 - script: |
     docker build: -f Dockerfile -t $(dockerId)/$(imageName)
@@ -20,7 +17,8 @@ steps:
   env:
         pswd: $(dockerId)/$(imageName)
 
-- task: Docker@2
+- task: DockerCompose@0
   inputs:
-    command: 'build'
-    Dockerfile: '**/Dockerfile'
+    dockerComposeFile: '**/docker-compose.yml'
+    action: 'Run a Docker Compose command'
+    dockerComposeCommand: 'docker-compose up -t' 
